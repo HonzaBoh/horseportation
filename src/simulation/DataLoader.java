@@ -52,15 +52,12 @@ public class DataLoader {
         sc.useLocale(Locale.US);
         Town Paris;
         Paris = new Town(sc.nextDouble(), sc.nextDouble(), 0, 0);
-        //System.out.println("Coordinates of Paris: x = " + sc.nextDouble() + ", y = " + sc.nextDouble());
         System.out.println(Paris + " Paris");
 
         int tmp = sc.nextInt();
         System.out.println("Count of towns: " + tmp);
         Town towns[] = new Town[tmp];
         for (int i = 0; i < tmp; i++) {
-            // System.out.println("Plane #" + (i + 1) + ": x: " + sc.nextDouble() + ", y = " + sc.nextDouble()
-            //        + ", Velocity = " + sc.nextDouble() + ", capacity = " + sc.nextDouble());
             towns[i] = new Town(sc.nextDouble(), sc.nextDouble(), sc.nextInt(), sc.nextInt());
             System.out.println("mesto: " + i + " --- " + towns[i].x + " " + towns[i].y + " " + towns[i].load + " " + towns[i].weight);
         }
@@ -68,8 +65,6 @@ public class DataLoader {
         System.out.println("Count of planes " + tmp);
         Plane planes[] = new Plane[tmp];
         for (int i = 0; i < tmp; i++) {
-            //System.out.println("Horse #" + (i + 1) + ": x: " + sc.nextDouble() + ", y = " + sc.nextDouble()
-            //       + ", weight = " + sc.nextDouble() + ", loadingTime = " + sc.nextDouble());
             planes[i] = new Plane(sc.nextDouble(), sc.nextDouble(), sc.nextInt(), sc.nextDouble());
             System.out.println("letadlo: " + i + " --- " + planes[i].x + " " + planes[i].y + " " + planes[i].capacity + " " + planes[i].speed);
         }
