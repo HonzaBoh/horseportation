@@ -1,6 +1,6 @@
 package simulation;
 /**
- * Trida mesto ("kun")
+ * Trida Mesto ("kun")
  */
 public class Town {
     /**
