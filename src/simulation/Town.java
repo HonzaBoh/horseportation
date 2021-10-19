@@ -1,5 +1,7 @@
 package simulation;
-
+/**
+ * Trida mesto ("kun")
+ */
 public class Town {
     /**
      * souradnice mesta x
@@ -17,7 +19,13 @@ public class Town {
      * vaha nakladu
      */
     public int weight;
-
+    /**
+     * konstruktor
+     * @param x ...souradnice x
+     * @param y ...souradnice y
+     * @param load ...doba nalozeni
+     * @param weight ...vaha nakladu
+     */
     public Town (double x, double y, int load, int weight) {
         this.x = x;
         this.y = y;
