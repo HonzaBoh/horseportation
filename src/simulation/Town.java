@@ -12,13 +12,13 @@ public class Town {
     /**
      * doba nakladani nakladu
      */
-    public double load;
+    public int load;
     /**
      * vaha nakladu
      */
     public int weight;
 
-    public Town (double x, double y, double load, int weight) {
+    public Town (double x, double y, int load, int weight) {
         this.x = x;
         this.y = y;
         this.load = load;
