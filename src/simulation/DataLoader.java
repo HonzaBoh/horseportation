@@ -1,6 +1,7 @@
 package simulation;
 
 import java.io.*;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -29,10 +30,12 @@ public class DataLoader {
 
     /**
      * Pouziva stejny mechanismus uzivany pri nacitani. Soubory cte po typech a uklada je do patricnych objektu
-     * @param FilePath
-     * @throws IOException
+     * @param FilePath cesta k souboru
+     * @param planes struktura pro ulozeni letadel
+     * @param stops struktura pro ulozeni zastavek
+     * @throws IOException TODO: zajistit odychyceni uvnitr metody
      */
-    static void obejctRead(String FilePath) throws IOException {
+    static void objectRead(String FilePath, List<Plane> planes, List<Town> stops) throws IOException {
         br = new BufferedReader(new FileReader(new File(FilePath)));
         String line;
         String content = "";
@@ -50,23 +53,17 @@ public class DataLoader {
         }
         sc = new Scanner(content);
         sc.useLocale(Locale.US);
-        Town Paris;
-        Paris = new Town(sc.nextDouble(), sc.nextDouble(), 0, 0);
-        System.out.println(Paris + " Paris");
+        SimulationEnvironment.PARIS_X = sc.nextDouble();
+        SimulationEnvironment.PARIS_Y = sc.nextDouble();
+        System.out.println("Paris (" + SimulationEnvironment.PARIS_X + ", " + SimulationEnvironment.PARIS_Y +  ")");
 
         int tmp = sc.nextInt();
-        System.out.println("Count of towns: " + tmp);
-        Town towns[] = new Town[tmp];
         for (int i = 0; i < tmp; i++) {
-            towns[i] = new Town(sc.nextDouble(), sc.nextDouble(), sc.nextInt(), sc.nextInt());
-            System.out.println("mesto: " + i + " --- " + towns[i].x + " " + towns[i].y + " " + towns[i].load + " " + towns[i].weight);
+           stops.add(new Town(sc.nextDouble(), sc.nextDouble(), sc.nextInt(), sc.nextInt()));
         }
         tmp = sc.nextInt();
-        System.out.println("Count of planes " + tmp);
-        Plane planes[] = new Plane[tmp];
         for (int i = 0; i < tmp; i++) {
-            planes[i] = new Plane(sc.nextDouble(), sc.nextDouble(), sc.nextInt(), sc.nextDouble());
-            System.out.println("letadlo: " + i + " --- " + planes[i].x + " " + planes[i].y + " " + planes[i].capacity + " " + planes[i].speed);
+            planes.add(new Plane(sc.nextDouble(), sc.nextDouble(), sc.nextInt(), sc.nextDouble()));
         }
     }
 
