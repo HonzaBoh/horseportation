@@ -22,7 +22,7 @@ public class Plane {
     /**
      * aktualni zaplneni letadla
      */
-    public int actualCapacity = 0;
+    public int actualCapacity;
     /**
      * konstruktor
      * @param x ...souradnice x
@@ -35,5 +35,6 @@ public class Plane {
         this.y = y;
         this.capacity = capacity;
         this.speed = speed;
+        actualCapacity = capacity;
     }
 }

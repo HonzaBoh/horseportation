@@ -26,7 +26,7 @@ public class Town {
      * @param load ...doba nalozeni
      * @param weight ...vaha nakladu
      */
-    public Town (double x, double y, int load, int weight) {
+    public Town (double x, double y, int weight, int load) {
         this.x = x;
         this.y = y;
         this.load = load;

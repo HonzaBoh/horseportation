@@ -15,6 +15,8 @@ public class Main {
         //DataLoader.descriptiveRead("Data\\parser.txt");
         List<Plane> tmpPlanes = new ArrayList<>();
         List<Town> tmpStops = new ArrayList<>();
-        DataLoader.objectRead("Data\\parser.txt", tmpPlanes, tmpStops);
+        DataLoader.objectRead("Data\\parser.txt", tmpPlanes, tmpStops); //správně funguje asi jen pro parser.txt :-(
+        SimulationEnvironment firstSimulation = new SimulationEnvironment();
+        firstSimulation.runSimulation(tmpPlanes, tmpStops);
     }
 }

@@ -31,8 +31,9 @@ public class SimulationEnvironment {
      * Spousteci bod pro simulaci
      * TODO: vytvoreni tridy mapa, predani jedne instance do simulace
      */
-    public void runSimulation(){
-
+    public void runSimulation(List<Plane> planes, List<Town> stops){
+        Mapa mapa = new Mapa(stops, planes);
+        mapa.firstFly();
     }
 
 
