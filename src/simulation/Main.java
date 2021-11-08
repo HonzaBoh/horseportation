@@ -18,5 +18,6 @@ public class Main {
         DataLoader.objectRead("Data\\parser.txt", tmpPlanes, tmpStops); //správně funguje asi jen pro parser.txt :-(
         SimulationEnvironment firstSimulation = new SimulationEnvironment();
         firstSimulation.runSimulation(tmpPlanes, tmpStops);
+        System.out.println("\nSimulation finished, thanks for using HorsePortation travel predictions and have a good day!");
     }
 }
