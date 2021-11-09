@@ -49,8 +49,8 @@ public class Mapa { //nejde pojmenovat Map? Wtf :D, Map je Interface, to je upln
                 }
             }
             statusChange(planes.get(p), Status.PARIS, p, null );
-
-            System.out.println("Plane " + p + " is going to Paris with actual Capacity: " + planes.get(p).actualCapacity);
+            System.out.println(planes.get(p).getCurrentStatus());
+//            System.out.println("Plane " + p + " is going to Paris with actual Capacity: " + planes.get(p).actualCapacity);
         }
     }
 
