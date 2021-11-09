@@ -46,7 +46,7 @@ public class DataLoader {
                         content += " " + line.substring(0, line.indexOf(":-)"));
                     }
                     else {
-                        content += line;
+                        content += " " + line;
                     }
                 }
             }
@@ -86,7 +86,7 @@ public class DataLoader {
                         content += " " + line.substring(0, line.indexOf(":-)"));
                     }
                     else {
-                        content += line;
+                        content += " " + line;
                     }
                 }
             }

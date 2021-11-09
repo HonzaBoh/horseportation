@@ -1,5 +1,4 @@
 package simulation;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,13 +34,13 @@ public class Mapa { //nejde pojmenovat Map? Wtf :D, Map je Interface, to je upln
 
         for (int p = 0; p < planes.size() && towns.size() != 0; p++) {
             statusChange(planes.get(p), Status.SET_OFF, p, null);
-            System.out.println(planes.get(p).getCurrentStatus());
+            System.out.println(planes.get(p).getCurrentStatusTimed());
 //            System.out.println("\nPlane: " + p + " (capacity = " + planes.get(p).capacity + ") is setting off, time is " + planes.get(p).timeDilatation);
             for (int i = 0; i < towns.size(); i++) {
                 if (planes.get(p).actualCapacity - towns.get(i).weight >= 0) {
                     planes.get(p).actualCapacity -= towns.get(i).weight;
                     statusChange(planes.get(p), Status.HORSE_LOAD, p, towns.get(i));
-                    System.out.println(planes.get(p).getCurrentStatus());
+                    System.out.println(planes.get(p).getCurrentStatusTimed());
                     //System.out.println("\tLoading horses with weight: " + towns.get(i).weight);
                     townsDone.add(towns.get(i));
                     towns.remove(i);
@@ -49,7 +48,7 @@ public class Mapa { //nejde pojmenovat Map? Wtf :D, Map je Interface, to je upln
                 }
             }
             statusChange(planes.get(p), Status.PARIS, p, null );
-            System.out.println(planes.get(p).getCurrentStatus());
+            System.out.println(planes.get(p).getCurrentStatusTimed());
 //            System.out.println("Plane " + p + " is going to Paris with actual Capacity: " + planes.get(p).actualCapacity);
         }
     }
@@ -61,20 +60,18 @@ public class Mapa { //nejde pojmenovat Map? Wtf :D, Map je Interface, to je upln
      * @param planeID evidence letadel pro hezky vypis :-)
      * @param horseLoadingPlace urceni specificke zastavky, pokud ji operace vyzaduje, v opacnem pripade null
      */
-    private void statusChange(@NotNull Plane p, @NotNull Status stat, int planeID, Town horseLoadingPlace){
+    private void statusChange(Plane p, Status stat, int planeID, Town horseLoadingPlace){
         switch (stat){
             case HORSE_LOAD:
                 p.timeDilatation+= horseLoadingPlace.load;
-                p.setCurrentStatus("Plane " + planeID + " is loading horses with weight: " + horseLoadingPlace.weight
-                        + " time is: " + p.timeDilatation + " min");
+                p.setCurrentStatus("Plane " + planeID + " is loading horses with weight: " + horseLoadingPlace.weight);
                 break;
             case PARIS:
-                p.setCurrentStatus("Plane " + planeID + " is setting off to Paris with actual Capacity: " + p.actualCapacity
-                        + " time is: " + p.timeDilatation + " min");
+                p.setCurrentStatus("Plane " + planeID + " is setting off to Paris with actual Capacity: " + p.actualCapacity);
                 break;
             case SET_OFF:
                 p.setCurrentStatus("Plane: " + planeID + " (capacity = " + p.capacity +
-                    ") is setting off, time is " +p.timeDilatation + " min");
+                    ") is setting off");
                 break;
         }
 

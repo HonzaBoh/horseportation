@@ -1,11 +1,9 @@
 package simulation;
 
-import org.jetbrains.annotations.NotNull;
-
 /**
  * Trida Letadlo
  */
-public class Plane implements Comparable{
+public class Plane implements Comparable<Plane>{
 
     /**
      * souradnice letadla x
@@ -46,6 +44,14 @@ public class Plane implements Comparable{
      * Zjisteni soucasneho stavu letadla pro vypis v simulaci
      * @return soucasny stav letadla
      */
+    public String getCurrentStatusTimed() {
+        return currentStatus + ", time is " + timeDilatation + " temporal units of time";
+    }
+
+    /**
+     * Zjisteni soucasneho stavu letadla pro vypis v simulaci do souboru
+     * @return soucasny stav letadla
+     */
     public String getCurrentStatus() {
         return currentStatus;
     }
@@ -56,6 +62,7 @@ public class Plane implements Comparable{
      */
     public void setCurrentStatus(String currentStatus) {
         this.currentStatus = currentStatus;
+        SimulationEnvironment.simulationLogger.add(new SimulationLog(getCurrentStatus(), timeDilatation));
     }
 
     /**
@@ -75,7 +82,7 @@ public class Plane implements Comparable{
     }
 
     @Override
-    public int compareTo(@NotNull Object o) {
-        return Integer.compare(((Plane) o).getTimeDilatation(), this.timeDilatation);
+    public int compareTo(Plane p) {
+        return Integer.compare(p.getTimeDilatation(), this.timeDilatation);
     }
 }

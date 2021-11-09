@@ -1,10 +1,7 @@
 package simulation;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     /**
@@ -18,6 +15,7 @@ public class Main {
         DataLoader.objectRead("Data\\parser.txt", tmpPlanes, tmpStops); //správně funguje asi jen pro parser.txt :-(
         SimulationEnvironment firstSimulation = new SimulationEnvironment();
         firstSimulation.runSimulation(tmpPlanes, tmpStops);
+        System.out.println("Readable entry saved to output.txt file");
         System.out.println("\nSimulation finished, thanks for using HorsePortation travel predictions and have a good day!");
     }
 }
