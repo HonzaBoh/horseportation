@@ -18,6 +18,11 @@ public class Mapa { //nejde pojmenovat Map? Wtf :D, Map je Interface, to je upln
     List<Town> townsDone = new ArrayList<>();
 
     /**
+     * Polomer Zeme zaokrouhlen na cele metry
+     */
+    public static final double EARTH_RADIUS = 6371.0;
+
+    /**
      * Konstruktor pro mapu
      * @param towns list mest, ktera se musi proletet
      * @param planes list letadel, ktera mame k dispozici
@@ -63,6 +68,7 @@ public class Mapa { //nejde pojmenovat Map? Wtf :D, Map je Interface, to je upln
     private void statusChange(Plane p, Status stat, int planeID, Town horseLoadingPlace, int stopID){
         switch (stat){
             case HORSE_LOAD:
+                p.setNextStop(horseLoadingPlace);
                 p.timeDilatation+= horseLoadingPlace.load;
                 p.setCurrentStatus("Plane " + planeID + " is loading horses from town: " + stopID + " with weight: " + horseLoadingPlace.weight);
                 break;

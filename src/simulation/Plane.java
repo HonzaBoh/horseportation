@@ -6,6 +6,39 @@ package simulation;
 public class Plane implements Comparable<Plane>{
 
     /**
+     * Hlida nasledujici zastavku pro vypocet doby presunu
+     */
+    Town nextStop;
+
+    /**
+     * Nasledujici zastavka
+     * @param nextStop Dalsi zastavka pro letadlo
+     */
+    public void setNextStop(Town nextStop) {
+        this.nextStop = nextStop;
+    }
+
+    /**
+     * Vypocet doby presunu mezi soucasnou a nasledujici pozice
+     * Jednoduchy fyzikalni vypocet
+     * @return doba presunu v sekundach
+     */
+    public int getTravelTime(){
+        int travelTime = (int) (this.velocity * getDistance());
+        this.x = this.nextStop.x;
+        this.y = this.nextStop.y;
+        return travelTime;
+    }
+
+    /**
+     * Vzdalenost dvou bodu v rovine
+     * @return vzdalenost dvou bodu v rovine dle vypoctu prepony
+     */
+    public double getDistance(){
+        return Math.sqrt(Math.pow(nextStop.x - this.x, 2) + Math.pow(nextStop.y - this.y, 2));
+    }
+
+    /**
      * souradnice letadla x
      */
     public double x;
@@ -20,7 +53,7 @@ public class Plane implements Comparable<Plane>{
     /**
      * rychlost v letadla
      */
-    public double speed;
+    public double velocity;
     /**
      * aktualni zaplneni letadla
      */
@@ -45,7 +78,7 @@ public class Plane implements Comparable<Plane>{
      * @return soucasny stav letadla
      */
     public String getCurrentStatusTimed() {
-        return currentStatus + ", time is " + timeDilatation + " temporal units of time";
+        return currentStatus + ", time is " + getTimeDilatation() + " temporal units of time";
     }
 
     /**
@@ -62,7 +95,7 @@ public class Plane implements Comparable<Plane>{
      */
     public void setCurrentStatus(String currentStatus) {
         this.currentStatus = currentStatus;
-        SimulationEnvironment.simulationLogger.add(new SimulationLog(getCurrentStatus(), timeDilatation));
+        SimulationEnvironment.simulationLogger.add(new SimulationLog(getCurrentStatus(), getTimeDilatation()));
     }
 
     /**
@@ -76,7 +109,7 @@ public class Plane implements Comparable<Plane>{
         this.x = x;
         this.y = y;
         this.capacity = capacity;
-        this.speed = speed;
+        this.velocity = speed;
         actualCapacity = capacity;
         timeDilatation = 0;
     }

@@ -38,20 +38,20 @@ public class DataLoader {
     static void objectRead(String FilePath, List<Plane> planes, List<Town> stops) throws IOException {
         br = new BufferedReader(new FileReader(new File(FilePath)));
         String line;
-        String content = "";
+        StringBuilder content = new StringBuilder();
         while ((line = br.readLine()) != null) {
             if (line.length() > 0) {
                 if (!line.startsWith(":-)")) {
                     if (line.contains(":-)")) {
-                        content += " " + line.substring(0, line.indexOf(":-)"));
+                        content.append(" ").append(line.substring(0, line.indexOf(":-)")));
                     }
                     else {
-                        content += " " + line;
+                        content.append(" ").append(line);
                     }
                 }
             }
         }
-        sc = new Scanner(content);
+        sc = new Scanner(content.toString());
         sc.useLocale(Locale.US);
         SimulationEnvironment.PARIS_X = sc.nextDouble();
         SimulationEnvironment.PARIS_Y = sc.nextDouble();

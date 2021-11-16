@@ -31,7 +31,7 @@ public class SimulationEnvironment {
      */
     void simulatedEnd(List<Plane> planes){
         Collections.sort(planes);
-        String endMsg = "Time required for the entire transportation process is " + planes.get(0).getTimeDilatation() + " min";
+        String endMsg = "Time required for the entire transportation process is " + planes.get(0).getTimeDilatation() + " temporal units of time";
         System.out.println(endMsg);
         Collections.sort(simulationLogger);
         try{
