@@ -19,12 +19,31 @@ public class Plane implements Comparable<Plane>{
     }
 
     /**
+     * Vpocita dobu presunu letadla do Parize a zaroven nastavi pozici letadla na pozici Parize
+     * @return doba letu do parize
+     */
+    public double getParisTravelTime(){
+        double travelTime = (this.velocity * getParisDistance());
+        this.x = SimulationEnvironment.PARIS_X;
+        this.y = SimulationEnvironment.PARIS_Y;
+        return travelTime;
+    }
+
+    /**
+     * Ziska vzdalenost soucasneho umisteni letadla od Parize
+     * @return vzdalenost letadlo -> Pariz
+     */
+    public double getParisDistance(){
+        return Math.sqrt(Math.pow(SimulationEnvironment.PARIS_X - this.x, 2) + Math.pow(SimulationEnvironment.PARIS_Y - this.y, 2));
+    }
+
+    /**
      * Vypocet doby presunu mezi soucasnou a nasledujici pozice
      * Jednoduchy fyzikalni vypocet
      * @return doba presunu v sekundach
      */
-    public int getTravelTime(){
-        int travelTime = (int) (this.velocity * getDistance());
+    public double getTravelTime(){
+        double travelTime = (this.velocity * getDistance());
         this.x = this.nextStop.x;
         this.y = this.nextStop.y;
         return travelTime;
@@ -62,10 +81,15 @@ public class Plane implements Comparable<Plane>{
     /**
      * Sleduje cas ve vztahu k simulaci, ve kterem se objekt letadla nachazi, dale figuruje v predani do vystupu
      */
-    public int timeDilatation;
+    public double timeDilatation;
 
+    /**
+     *  Vrati stav letadla v case po prubeh simulace
+     * @return Soucany casovy posun
+     */
     public int getTimeDilatation() {
-        return timeDilatation;
+//        System.out.println(this.timeDilatation);
+        return (int)timeDilatation;
     }
 
     /**
@@ -114,8 +138,13 @@ public class Plane implements Comparable<Plane>{
         timeDilatation = 0;
     }
 
+    /**
+     * Porovna dve letadla na zaklade jejich casu v jedne instanci simulace
+     * @param p letdlo, se kterym se toto letadlo porovnanva
+     * @return letadlo, ktere je v simulaci drive
+     */
     @Override
     public int compareTo(Plane p) {
-        return Integer.compare(p.getTimeDilatation(), this.timeDilatation);
+        return Double.compare(p.getTimeDilatation(), this.timeDilatation);
     }
 }

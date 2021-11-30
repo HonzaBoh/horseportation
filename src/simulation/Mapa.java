@@ -18,11 +18,6 @@ public class Mapa { //nejde pojmenovat Map? Wtf :D, Map je Interface, to je upln
     List<Town> townsDone = new ArrayList<>();
 
     /**
-     * Polomer Zeme zaokrouhlen na cele metry
-     */
-    public static final double EARTH_RADIUS = 6371.0;
-
-    /**
      * Konstruktor pro mapu
      * @param towns list mest, ktera se musi proletet
      * @param planes list letadel, ktera mame k dispozici
@@ -44,6 +39,8 @@ public class Mapa { //nejde pojmenovat Map? Wtf :D, Map je Interface, to je upln
             for (int i = 0; i < towns.size(); i++) {
                 if (planes.get(p).actualCapacity - towns.get(i).weight >= 0) {
                     planes.get(p).actualCapacity -= towns.get(i).weight;
+                    statusChange(planes.get(p), Status.NEXT_STOP, p, towns.get(i), townsDone.size());
+                    System.out.println(planes.get(p).getCurrentStatusTimed());
                     statusChange(planes.get(p), Status.HORSE_LOAD, p, towns.get(i), townsDone.size());
                     System.out.println(planes.get(p).getCurrentStatusTimed());
                     //System.out.println("\tLoading horses with weight: " + towns.get(i).weight);
@@ -68,16 +65,23 @@ public class Mapa { //nejde pojmenovat Map? Wtf :D, Map je Interface, to je upln
     private void statusChange(Plane p, Status stat, int planeID, Town horseLoadingPlace, int stopID){
         switch (stat){
             case HORSE_LOAD:
-                p.setNextStop(horseLoadingPlace);
                 p.timeDilatation+= horseLoadingPlace.load;
                 p.setCurrentStatus("Plane " + planeID + " is loading horses from town: " + stopID + " with weight: " + horseLoadingPlace.weight);
                 break;
             case PARIS:
                 p.setCurrentStatus("Plane " + planeID + " is setting off to Paris with actual Capacity: " + p.actualCapacity);
+                System.out.println(p.getCurrentStatusTimed()); //fuj
+                p.timeDilatation += p.getParisTravelTime();
+                p.setCurrentStatus("Plane " + planeID + " is landing in Paris with actual Capacity: " + p.actualCapacity);
                 break;
             case SET_OFF:
                 p.setCurrentStatus("Plane: " + planeID + " (capacity = " + p.capacity +
                     ") is setting off");
+                break;
+            case NEXT_STOP:
+                p.setNextStop(horseLoadingPlace);
+                p.timeDilatation += p.getTravelTime();
+                p.setCurrentStatus("Plane " + planeID + " landed at town " + stopID + " and is prepared to load horses of weight: " + horseLoadingPlace.weight);
                 break;
         }
 

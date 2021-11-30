@@ -9,5 +9,6 @@ public enum Status {
     PARIS,
     HORSE_LOAD,
     SET_OFF,
+    NEXT_STOP,
     FINISHED;
 }

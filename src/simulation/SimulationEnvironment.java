@@ -21,6 +21,9 @@ public class SimulationEnvironment {
      */
     public static double PARIS_Y;
 
+    /**
+     * Prostredek pro zapisovani vstupu s casovym razenim
+     */
     public static List<SimulationLog> simulationLogger;
 
     /**
@@ -31,7 +34,13 @@ public class SimulationEnvironment {
      */
     void simulatedEnd(List<Plane> planes){
         Collections.sort(planes);
-        String endMsg = "Time required for the entire transportation process is " + planes.get(0).getTimeDilatation() + " temporal units of time";
+        String endMsg;
+        if (planes.get(0).getTimeDilatation() < 1){
+            endMsg = "Time required for the entire transportation process is actually less than 1 temporal units of time, our planes are fast as fuck :)";
+        }
+        else {
+            endMsg = "Time required for the entire transportation process is " + planes.get(0).getTimeDilatation() + " temporal units of time";
+        }
         System.out.println(endMsg);
         Collections.sort(simulationLogger);
         try{

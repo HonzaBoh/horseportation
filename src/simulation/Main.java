@@ -6,7 +6,6 @@ import java.util.*;
 public class Main {
     /**
      * Startovaci bod programu
-     * TODO: vymyslet prvni pruchod simulaci, zajistit vypis zmeny stavu v case
      */
     public static void main(String[] args) throws IOException {
         //DataLoader.descriptiveRead("Data\\parser.txt");
