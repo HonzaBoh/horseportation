@@ -31,7 +31,7 @@ public class Mapa { //nejde pojmenovat Map? Wtf :D, Map je Interface, to je upln
      *  Metoda naplni vsechna letadla co nejvice lze a vykona prvni let smerem do Parize
      */
     public void firstFly() {
-
+        planes.sort(Plane.optimalPlane);// seradi letadla od nejlepsich
         for (int p = 0; p < planes.size() && towns.size() != 0; p++) {
             statusChange(planes.get(p), Status.SET_OFF, p, null, 0);
             System.out.println(planes.get(p).getCurrentStatusTimed());
@@ -49,6 +49,7 @@ public class Mapa { //nejde pojmenovat Map? Wtf :D, Map je Interface, to je upln
                     i = -1;
                 }
             }
+            //TODO: letadla z parize zpatky zaradit
             statusChange(planes.get(p), Status.PARIS, p, null, 0);
             System.out.println(planes.get(p).getCurrentStatusTimed());
 //            System.out.println("Plane " + p + " is going to Paris with actual Capacity: " + planes.get(p).actualCapacity);

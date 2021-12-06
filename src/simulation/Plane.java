@@ -1,5 +1,7 @@
 package simulation;
 
+import java.util.Comparator;
+
 /**
  * Trida Letadlo
  */
@@ -9,6 +11,14 @@ public class Plane implements Comparable<Plane>{
      * Hlida nasledujici zastavku pro vypocet doby presunu
      */
     Town nextStop;
+
+    /**Comparator pro hledani optimalniho letadla z pomeru rychlost/kapacita */
+    public static Comparator<Plane> optimalPlane = new Comparator<Plane>() {
+        @Override
+        public int compare(Plane plane, Plane t1) {
+            return Math.abs((int) ((t1.velocity / t1.capacity) - (plane.velocity / plane.capacity)));
+        }
+    };
 
     /**
      * Nasledujici zastavka
