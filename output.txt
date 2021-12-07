@@ -1,0 +1,19 @@
+Paris is located at x: 500000.0, y: 1000000.0
+Time: 0: Plane: 0 (capacity = 2500) is setting off
+Time: 0: Plane 0 landed at town 0 and is prepared to load horses of weight: 1000
+Time: 0: Plane: 1 (capacity = 2000) is setting off
+Time: 3600: Plane 0 is loading horses from town: 0 with weight: 1000
+Time: 69444444: Plane 1 landed at town 2 and is prepared to load horses of weight: 1800
+Time: 69453444: Plane 1 is loading horses from town: 2 with weight: 1800
+Time: 69453444: Plane 1 is setting off to Paris with actual Capacity: 200
+Time: 138897888: Plane 1 is landing in Paris with actual Capacity: 200
+Time: 277781377: Plane 0 landed at town 1 and is prepared to load horses of weight: 1500
+Time: 277788577: Plane 0 is loading horses from town: 1 with weight: 1500
+Time: 277788577: Plane 0 is setting off to Paris with actual Capacity: 0
+Time: 416677466: Plane 0 is landing in Paris with actual Capacity: 0
+Current statistics for spent time in the transport process for entire fleet:
+ 
+Plane that spent most time in the air was plane #0 which flew for 4.16677466667E8 temporal units of time
+Plane that transported most was plane #0 which transported 2500 measuring units for horses!
+   
+Time required for the entire transportation process is 416677466 temporal units of time

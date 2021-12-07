@@ -18,7 +18,7 @@ public class Main {
         List<Plane> tmpPlanes = new ArrayList<>();
         List<Town> tmpStops = new ArrayList<>();
         try {
-            DataLoader.objectRead("Data\\parser.txt", tmpPlanes, tmpStops);
+            DataLoader.objectRead(args[0], tmpPlanes, tmpStops);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("IOE occured, ending terminating...");
