@@ -12,8 +12,17 @@ public class Plane implements Comparable<Plane>{
      */
     Town nextStop;
 
+    /**
+     * Celkove mnozstvi prepravenych kilo koni
+     */
+    public int transportedTotal;
+
     /**Comparator pro hledani optimalniho letadla z pomeru rychlost/kapacita */
     public static Comparator<Plane> optimalPlane = (plane, t1) -> Integer.compare((int)(t1.velocity / t1.capacity), (int)(plane.velocity / plane.capacity));
+
+    /**Comparator pro hledani dfs*/
+    public static Comparator<Plane> heaviestFlyer = (plane, t1) -> Integer.compare(t1.transportedTotal, plane.transportedTotal);
+
 
     /**
      * Nasledujici zastavka
@@ -162,6 +171,7 @@ public class Plane implements Comparable<Plane>{
         this.velocity = speed;
         actualCapacity = capacity;
         timeDilatation = 0;
+        transportedTotal = 0;
     }
 
     /**

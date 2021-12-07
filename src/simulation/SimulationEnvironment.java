@@ -48,6 +48,14 @@ public class SimulationEnvironment {
             for (SimulationLog simulationLog : simulationLogger) {
                 pw.println(simulationLog);
             }
+            pw.println("Current statistics for spent time in the transport process for entire fleet:");
+            for (Plane p:planes) {
+                System.out.println("Plane " + p.getPlaneID() + " spent " + p.getTimeDilatation() + " temporal units of time in the air and carried weight of " + p.transportedTotal + " in some horse measurements");
+            }
+            pw.println(" ");
+            pw.println("Plane that spent most time in the air was plane #" + planes.get(0).getPlaneID() + " which flew for " + planes.get(0).timeDilatation + " temporal units of time");
+            planes.sort(Plane.heaviestFlyer);
+            pw.println("Plane that transported most was plane #" + planes.get(0).getPlaneID() + " which transported " + planes.get(0).transportedTotal + " measuring units for horses!");
             pw.println("   ");
             pw.println(endMsg);
         }catch (IOException ioException){

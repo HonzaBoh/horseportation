@@ -88,6 +88,7 @@ public class Mapa { //nejde pojmenovat Map? Wtf :D, Map je Interface, to je upln
         switch (stat){
             case HORSE_LOAD:
                 p.timeDilatation+= horseLoadingPlace.load;
+                p.transportedTotal += horseLoadingPlace.weight;
                 p.setCurrentStatus("Plane " + p.getPlaneID() + " is loading horses from town: " + stopID + " with weight: " + horseLoadingPlace.weight);
                 break;
             case PARIS:
