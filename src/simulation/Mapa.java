@@ -2,6 +2,10 @@ package simulation;
 
 import java.util.*;
 
+/**
+ * Trida pro praci a konkretni vypocty v ramci simulace
+ * Simulaci provadi na urovni programu, ktera je spise pro funkcionalni ucely, data nasledne preda do prosterdi a Loggeru
+ */
 public class Mapa { //nejde pojmenovat Map? Wtf :D, Map je Interface, to je uplne neco jineho, co uz existuje :P
     /**
      * list letadel, která máme k dispozici

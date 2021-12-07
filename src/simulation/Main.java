@@ -3,6 +3,10 @@ package simulation;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * Spousteci bod pro program
+ * Data nacte a preda do simulacniho prostredi
+ */
 public class Main {
     /**
      * Startovaci bod programu
