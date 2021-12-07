@@ -13,10 +13,7 @@ import java.util.Scanner;
  * Nekompatibilni se souborem tutorial, nepracuje se smajliky coby znakem komentare
  */
 public class DataLoader {
-    /**
-     * souradnice Parize
-     */
-    public static int parisX, parisY;
+
 
     /**
      * Prostredek pro nacitani dat z radku nactenych z datasetu
