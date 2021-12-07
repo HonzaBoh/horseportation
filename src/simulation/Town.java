@@ -1,8 +1,11 @@
 package simulation;
+
+
 /**
  * Trida Mesto ("kun")
  */
 public class Town {
+
     /**
      * souradnice mesta x
      */

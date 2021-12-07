@@ -33,22 +33,20 @@ public class DataLoader {
      * @param FilePath cesta k souboru
      * @param planes struktura pro ulozeni letadel
      * @param stops struktura pro ulozeni zastavek
-     * @throws IOException TODO: zajistit odychyceni uvnitr metody
+     * @throws IOException problem nacteni souboru
      */
     static void objectRead(String FilePath, List<Plane> planes, List<Town> stops) throws IOException {
         br = new BufferedReader(new FileReader(new File(FilePath)));
         String line;
         StringBuilder content = new StringBuilder();
         while ((line = br.readLine()) != null) {
-            if (line.length() > 0) {
-                if (!line.startsWith(":-)")) {
+            if (line.length() > 0 && !line.startsWith(":-)")) {
                     if (line.contains(":-)")) {
                         content.append(" ").append(line.substring(0, line.indexOf(":-)")));
                     }
                     else {
                         content.append(" ").append(line);
                     }
-                }
             }
         }
         sc = new Scanner(content.toString());
@@ -64,52 +62,8 @@ public class DataLoader {
         tmp = sc.nextInt();
         for (int i = 0; i < tmp; i++) {
             planes.add(new Plane(sc.nextDouble(), sc.nextDouble(), sc.nextInt(), sc.nextDouble()));
+            planes.get(i).setPlaneID(i);
         }
     }
 
-        /**
-         * Pouziva stejny mechanismus uzivany pri nacitani. Soubory cte po typech.
-         * Preformatovany vystup je na konzoli bez baleni informaci do objektu
-         *
-         * @param FilePath cesta k datasetu pro vypsani
-         * @throws FileNotFoundException v pripade zadani spatne cesty k datasetu
-         * @throws IOException           v pripade chyby cteni (NENECHAVAT DATASET NA FLASH DISKU A TEN ZKOUSET ZA BEHU ODPOJIT!)
-         */
-    static void descriptiveRead(String FilePath) throws IOException {
-        br = new BufferedReader(new FileReader(new File(FilePath)));
-        String line;
-        String content = "";
-        while ((line = br.readLine()) != null) {
-            if (line.length() > 0) {
-                if (!line.startsWith(":-)")) {
-                    if (line.contains(":-)")) {
-                        content += " " + line.substring(0, line.indexOf(":-)"));
-                    }
-                    else {
-                        content += " " + line;
-                    }
-                }
-            }
-        }
-        System.out.println(content);
-        System.out.println("____");
-        sc = new Scanner(content);
-        sc.useLocale(Locale.US);
-        System.out.println("Coordinates of Paris: x = " + sc.nextDouble() + ", y = " + sc.nextDouble());
-        int tmp = sc.nextInt();
-        System.out.println("Count of horses " + tmp);
-        for (int i = 0; i < tmp; i++) {
-            System.out.println("Horse #" + (i + 1) + ": x: " + sc.nextDouble() + ", y = " + sc.nextDouble()
-                    + ", weight = " + sc.nextDouble() + ", loadingTime = " + sc.nextDouble());
-        }
-
-        tmp = sc.nextInt();
-        System.out.println("Planes available: " + tmp);
-        System.out.println(sc.hasNextDouble());
-        System.out.println(sc.hasNextInt());
-        for (int i = 0; i < tmp; i++) {
-            System.out.println("Plane #" + (i + 1) + ": x: " + sc.nextDouble() + ", y = " + sc.nextDouble()
-                    + ", Velocity = " + sc.nextDouble() + ", capacity = " + sc.nextDouble());
-        }
-    }
 }

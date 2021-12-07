@@ -43,15 +43,13 @@ public class SimulationEnvironment {
         }
         System.out.println(endMsg);
         Collections.sort(simulationLogger);
-        try{
-            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("output.txt")));
+        try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("output.txt")))){
             pw.println("Paris is located at x: " + PARIS_X + ", y: " + PARIS_Y);
             for (SimulationLog simulationLog : simulationLogger) {
                 pw.println(simulationLog);
             }
             pw.println("   ");
             pw.println(endMsg);
-            pw.close();
         }catch (IOException ioException){
             System.out.println("Pocitac hori");
         }
@@ -60,7 +58,6 @@ public class SimulationEnvironment {
 
     /**
      * Spousteci bod pro simulaci
-     * TODO: vytvoreni tridy mapa, predani jedne instance do simulace
      */
     public void runSimulation(List<Plane> planes, List<Town> stops){
         simulationLogger = new ArrayList<>();

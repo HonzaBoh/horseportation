@@ -16,7 +16,7 @@ public class Plane implements Comparable<Plane>{
     public static Comparator<Plane> optimalPlane = new Comparator<Plane>() {
         @Override
         public int compare(Plane plane, Plane t1) {
-            return Math.abs((int) ((t1.velocity / t1.capacity) - (plane.velocity / plane.capacity)));
+            return Integer.compare((int)(t1.velocity / t1.capacity), (int)(plane.velocity / plane.capacity));
         }
     };
 
@@ -87,6 +87,27 @@ public class Plane implements Comparable<Plane>{
      * aktualni zaplneni letadla
      */
     public int actualCapacity;
+
+    /**
+     * identifikator pro letadlo
+     */
+    private int planeID;
+
+    /**
+     * Ziskani ID pro letadlo - id je poradi pridaneho letadla
+     * @return id letadla
+     */
+    public int getPlaneID() {
+        return planeID;
+    }
+
+    /**
+     * Nastaveni ID letadla pri cteni ze souboru
+     * @param planeID id letadla
+     */
+    public void setPlaneID(int planeID) {
+        this.planeID = planeID;
+    }
 
     /**
      * Sleduje cas ve vztahu k simulaci, ve kterem se objekt letadla nachazi, dale figuruje v predani do vystupu
