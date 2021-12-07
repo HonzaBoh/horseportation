@@ -57,7 +57,9 @@ public class SimulationEnvironment {
 
 
     /**
-     * Spousteci bod pro simulaci
+     * Spousteci bod pro simulaci - vytvoreni mapy pro vypocet vzdalenosti
+     * @param stops seznam zastavek, pro nabirani koni
+     * @param planes seznam letadel prepravujici kone
      */
     public void runSimulation(List<Plane> planes, List<Town> stops){
         simulationLogger = new ArrayList<>();

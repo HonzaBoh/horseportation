@@ -57,6 +57,7 @@ public class Mapa { //nejde pojmenovat Map? Wtf :D, Map je Interface, to je upln
     /**
      * Zaradi letadlo na konec seznamu v Parizi
      * @param p polozka v seznam
+     * @param planeSize velikost seznamu letadel
      */
     public void parisTurn(int p, int planeSize){
         statusChange(planes.get(p), Status.PARIS, null, 0);
