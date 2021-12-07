@@ -41,7 +41,7 @@ public class Plane implements Comparable<Plane>{
 
     /**
      * Ziska vzdalenost soucasneho umisteni letadla od Parize
-     * @return vzdalenost letadlo -> Pariz
+     * @return vzdalenost letadlo - Pariz
      */
     public double getParisDistance(){
         return Math.sqrt(Math.pow(SimulationEnvironment.PARIS_X - this.x, 2) + Math.pow(SimulationEnvironment.PARIS_Y - this.y, 2));
