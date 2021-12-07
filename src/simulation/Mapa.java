@@ -82,6 +82,7 @@ public class Mapa { //nejde pojmenovat Map? Wtf :D, Map je Interface, to je upln
      * @param p letadlo v simulaci
      * @param stat status pro vyhodnoceni chovani letadla a posunu v case simulace
      * @param horseLoadingPlace urceni specificke zastavky, pokud ji operace vyzaduje, v opacnem pripade null
+     * @param stopID identifikator pro zastavku
      */
     private void statusChange(Plane p, Status stat,  Town horseLoadingPlace, int stopID){
         switch (stat){

@@ -13,12 +13,7 @@ public class Plane implements Comparable<Plane>{
     Town nextStop;
 
     /**Comparator pro hledani optimalniho letadla z pomeru rychlost/kapacita */
-    public static Comparator<Plane> optimalPlane = new Comparator<Plane>() {
-        @Override
-        public int compare(Plane plane, Plane t1) {
-            return Integer.compare((int)(t1.velocity / t1.capacity), (int)(plane.velocity / plane.capacity));
-        }
-    };
+    public static Comparator<Plane> optimalPlane = (plane, t1) -> Integer.compare((int)(t1.velocity / t1.capacity), (int)(plane.velocity / plane.capacity));
 
     /**
      * Nasledujici zastavka
@@ -124,7 +119,7 @@ public class Plane implements Comparable<Plane>{
     }
 
     /**
-     * soucasny stav letadla, ruzne stavy viz. {@code Status} & {@code Mapa.statusChange(...)}
+     * soucasny stav letadla, ruzne stavy viz. {@code Status} dale {@code Mapa.statusChange(...)}
      */
     private String currentStatus;
 
