@@ -27,6 +27,7 @@ public class Mapa { //nejde pojmenovat Map? Wtf :D, Map je Interface, to je upln
      */
     public Mapa(List<Town> towns, List<Plane> planes) {
         this.planes = planes;
+        //added comment
         this.towns = towns;
     }
 
